@@ -14,14 +14,14 @@ fi
 echo "Running container for user: $user"
 
 # Allow container to use the host X11 server
-xhost +local:root
+xhost +local:docker
 
 # Run Docker
 # Ensures access to x11, display, just change your paths
 docker run --gpus all \
 	   --name=${user}_nerf \
 	   --env="QT_X11_NO_MITSHM=1" \
-	   --env DISPLAY=$DISPLAY \
+	   --env="DISPLAY=$DISPLAY" \
            --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
  	   --env="XAUTHORITY=$XAUTH" \
   	   --volume="$XAUTH:$XAUTH" \
