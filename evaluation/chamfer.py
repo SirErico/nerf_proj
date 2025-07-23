@@ -1,1 +1,0 @@
-Jasieczk, tu wklej swoj kod
