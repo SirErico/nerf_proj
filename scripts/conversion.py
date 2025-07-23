@@ -100,10 +100,10 @@ def process_json_to_nerf(input_json, train_dir, output_json):
     # Parametry kamery
     camera_params = {
         "camera_model": "OPENCV",
-        "fl_x": 615.0,
-        "fl_y": 636.39,
-        "cx": 614.82,
-        "cy": 356.18,
+        "fl_x": 610.35,
+        "fl_y": 609.99,
+        "cx": 631.7,
+        "cy": 353.59,
         "w": 1280,
         "h": 720,
         "frames": frames
