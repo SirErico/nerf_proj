@@ -2,11 +2,11 @@
 
 # Usage: bash fix_json_paths.sh
 
-# Get the absolute path of the current directory, ensure trailing slash
-TARGET_PATH="$(pwd)/"
-REPLACEMENT="./"
+# This script fixes JSON file paths by replacing everything before "/images/" with "./images/"
+# Works with any path structure that contains "/images/" folder
 
 find . -type f -name 'transforms*.json' | while read -r file; do
     echo "Fixing $file"
-    sed -i "s|$TARGET_PATH|$REPLACEMENT|g" "$file"
+    # Replace any path ending with /images/ with ./images/
+    sed -i 's|"[^"]*\/images\/|"./images/|g' "$file"
 done
