@@ -1,5 +1,8 @@
 # custom 
 rosbags/
+dataset/images/
+dataset/transforms.json
+nerf_dataset/
 
 
 # Byte-compiled / optimized / DLL files
