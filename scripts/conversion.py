@@ -1,3 +1,13 @@
+"""
+Camera Pose Conversion Script for NeRF Studio.
+
+This script converts camera pose data from a custom JSON format (containing translation 
+and quaternion rotation data) to the NeRF Studio transforms.json format. 
+
+Usage:
+    python conversion.py --input-json poses.json --train-dir ./train --output-json transforms.json
+"""
+
 import json
 import numpy as np
 from scipy.spatial.transform import Rotation as R
