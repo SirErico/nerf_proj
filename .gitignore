@@ -1,8 +1,7 @@
 # custom 
-rosbags/
-dataset/images/
-dataset/transforms.json
+bag_data/
 nerf_dataset/
+output
 
 
 # Byte-compiled / optimized / DLL files
