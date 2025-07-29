@@ -3,6 +3,25 @@
 
 
 
+1. Clone the repository:
+```bash
+git clone https://github.com/SirErico/nerf_proj
+```
+
+2. Create a venv
+```bash
+cd ..
+python3 -m venv .venv
+```
+
+3. Install the Python dependencies from `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+
+
+
 ## Methods for comparsion
 - **NeRF**: Neural Radiance Fields ([Paper](https://arxiv.org/pdf/2003.08934))
 - **Mip-NeRF**: Mip-NeRF: A Multiscale Representation for Anti-Aliased Neural Radiance Fields ([Paper](https://arxiv.org/pdf/2103.13415))
