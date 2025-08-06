@@ -19,19 +19,17 @@ xhost +local:docker
 # Run Docker
 # Ensures access to x11, display, just change your paths
 docker run --gpus all \
-	   --name=${user}_nerf \
-	   --env="QT_X11_NO_MITSHM=1" \
-	   --env="DISPLAY=$DISPLAY" \
-           --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
- 	   --env="XAUTHORITY=$XAUTH" \
-  	   --volume="$XAUTH:$XAUTH" \
-	   -v /shared/datasets:/workspace/datasets \
-	   -v /home/$user/.cache/:/home/user/.cache/ \
- 	   --env="NVIDIA_VISIBLE_DEVICES=all" \
-	   --env="NVIDIA_DRIVER_CAPABILITIES=all" \
-	   --privileged \
-	   --network=host \
-           -it \
-           --shm-size=64gb \
-           nerf_colmap311 \
-	   bash
+	--name=${user}_nerf \
+	--env="QT_X11_NO_MITSHM=1" \
+	--env="DISPLAY=$DISPLAY" \
+	--volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+	--env="XAUTHORITY=$XAUTH" \
+	--volume="$XAUTH:$XAUTH" \
+	-v /shared/datasets:/workspace/datasets \
+	-v /home/$user/.cache/:/home/user/.cache/ \
+	--privileged \
+	--network=host \
+	-it \
+	--shm-size=64gb \
+	nerf_colmap311 \
+	bash
