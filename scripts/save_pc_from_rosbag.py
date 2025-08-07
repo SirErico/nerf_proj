@@ -5,7 +5,6 @@ from rclpy.node import Node
 from sensor_msgs.msg import PointCloud2, PointField
 import numpy as np
 import open3d as o3d
-import ros2_numpy
 import struct
 
 def unpack_pointcloud2(msg: PointCloud2):
