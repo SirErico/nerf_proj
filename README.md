@@ -8,18 +8,39 @@
 git clone https://github.com/SirErico/nerf_proj
 ```
 
-2. Create a venv
+2. Run docker compose
 ```bash
-cd ..
-python3 -m venv .venv
+cd docker
+docker compose build
 ```
 
-3. Install the Python dependencies from `requirements.txt`:
+We mount the /nerf_dataset:/workspace/nerf_dataset, so store your bags there.
+3. Inspect if bag is visible:
 ```bash
-pip install -r requirements.txt
+docker compose run --rm ros2_collector \
+  ros2 bag info /workspace/nerf_dataset/tomato_soup_can/tomato_soup_can_test
 ```
 
+4. Convert the bag to nerfstudio dataset:
+```bash
+docker compose run --rm ros2_collector bash -lc \
+'run_robot2nerf.sh /workspace/nerf_dataset/tomato_soup_can/tomato_soup_can_test \
+  --image_topic /rgb/image_raw \
+  --camera_info_topic /rgb/camera_info \
+  --source_frame base_link \
+  --target_frame azure_rgb \
+  --output_dir /workspace/nerf_dataset/dataset_from_bag \
+  --collection_rate 10'
+```
 
+5. Train the model:
+```bash
+docker compose run --rm --service-ports nerfstudio_lrm bash -lc \
+'ns-train nerfacto \
+  --data /workspace/nerf_dataset/dataset_from_bag \
+  --viewer.websocket-port 7007 \
+  --viewer.websocket-host 0.0.0.0'
+```
 
 
 ## Methods for comparsion
